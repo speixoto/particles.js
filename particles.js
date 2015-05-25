@@ -797,6 +797,7 @@ var pJS = function (tag_id, params) {
         pJS.tmp.pushing = true;
 
         for (var i = 0; i < nb; i++) {
+
             pJS.particles.array.push(
                 new pJS.fn.particle(
                     pJS.particles.color,
@@ -804,22 +805,11 @@ var pJS = function (tag_id, params) {
                     {
                         'x': pos ? pos.pos_x : Math.random() * pJS.canvas.w,
                         'y': pos ? pos.pos_y : Math.random() * pJS.canvas.h
-                    }
+                    },
+                    theImages[Math.floor((particleRandomSeed * (theImages.length)) + 1)],
+                    Math.floor((Math.random() * 64) + 32)
                 )
-            )
-
-            /*
-            new pJS.fn.particle(
-                pJS.particles.color,
-                pJS.particles.opacity.value,
-                {
-                    'x': pos ? pos.pos_x : Math.random() * pJS.canvas.w,
-                    'y': pos ? pos.pos_y : Math.random() * pJS.canvas.h
-                },
-                theImages[Math.floor((particleRandomSeed * (theImages.length)) + 1)],
-                Math.floor((Math.random() * 64) + 32)
-            )
-*/
+            );
 
             if (i == nb - 1) {
                 if (!pJS.particles.move.enable) {
