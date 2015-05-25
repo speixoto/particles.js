@@ -806,7 +806,7 @@ var pJS = function (tag_id, params) {
                         'x': pos ? pos.pos_x : Math.random() * pJS.canvas.w,
                         'y': pos ? pos.pos_y : Math.random() * pJS.canvas.h
                     },
-                    theImages[Math.floor((particleRandomSeed * (theImages.length)) + 1)],
+                    theImages[Math.floor((Math.random() * (theImages.length)) + 1)],
                     Math.floor((Math.random() * 64) + 32)
                 )
             );
