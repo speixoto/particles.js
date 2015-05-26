@@ -11,6 +11,8 @@
 
 /* Otherwise just put the config content (json): */
 
+window.onload = function() {
+
 particlesJS('particles-js',
     {
         "particles": {
@@ -129,3 +131,5 @@ particlesJS('particles-js',
         }
     }
 );
+
+};

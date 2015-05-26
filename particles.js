@@ -395,13 +395,8 @@ var pJS = function (tag_id, params) {
 
     };
 
-
-
-
-
     var pCounter = 0;
     var seed = 1;
-
 
     pJS.fn.particle.prototype.draw = function () {
 
@@ -430,24 +425,20 @@ var pJS = function (tag_id, params) {
 
         switch (p.shape) {
             case 'circle':
-                seed = Math.random();
                 if( typeof this.logo === 'undefined' ){
-                    this.logo = theImages[theImages.length-1];
+                    this.logo = Math.floor((Math.random() * (theImages.length-1)) + 1);
                 }
-
-
                 pJS.canvas.ctx.drawImage(
-                    this.logo,
-                    0, //source X
-                    0, //source Y
-                    this.logo.width, // source width
-                    this.logo.height, //source height
-                    this.x - Math.floor(this.radius) / 2,  // destination X
-                    this.y - Math.floor(this.radius) / 2, //destination y
-                    Math.floor(this.radius), // destination width
-                    Math.floor(this.radius) //destination Y
+                    theImages[this.logo],
+                    0,                                         //source X
+                    0,                                         //source Y
+                    theImages[this.logo].width,                //source width
+                    theImages[this.logo].height,               //source height
+                    this.x - Math.floor(this.radius) / 2,      //destination X
+                    this.y - Math.floor(this.radius) / 2,      //destination y
+                    Math.floor(this.radius),                   //destination width
+                    Math.floor(this.radius)                    //destination height
                 );
-
                 break;
             case 'edge':
                 pJS.canvas.ctx.rect(p.x - radius, p.y - radius, radius * 2, radius * 2);
@@ -519,6 +510,7 @@ var pJS = function (tag_id, params) {
 
     var theImages = [];
     var particleRandomSeed = 1;
+    
     var twitter_svg = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" width="32" height="32" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve"><circle fill="#E2E2E2" cx="16" cy="16" r="16"/><circle fill="#F6F6F6" cx="16" cy="16" r="15"/><path fill="#E2E2E2" d="M23 11.5c-0.5 0.2-1.1 0.4-1.6 0.5 0.6-0.4 1-1 1.3-1.7 -0.6 0.3-1.2 0.6-1.8 0.7 -0.5-0.6-1.3-0.9-2.1-0.9 -1.6 0-2.9 1.3-2.9 3 0 0.2 0 0.5 0.1 0.7 -2.4-0.1-4.5-1.3-5.9-3.1 -0.2 0.4-0.4 1-0.4 1.5 0 1 0.5 1.9 1.3 2.5 -0.5 0-0.9-0.1-1.3-0.4 0 0 0 0 0 0 0 1.4 1 2.7 2.3 2.9 -0.2 0.1-0.5 0.1-0.8 0.1 -0.2 0-0.4 0-0.5-0.1 0.4 1.2 1.4 2 2.7 2.1 -1 0.8-2.2 1.3-3.6 1.3 -0.2 0-0.5 0-0.7 0 1.3 0.8 2.8 1.3 4.4 1.3 5.3 0 8.2-4.5 8.2-8.5 0-0.1 0-0.3 0-0.4C22.1 12.6 22.6 12.1 23 11.5z"/></svg>';
     var pinterest_svg = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" width="32" height="32" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve"><circle fill="#E2E2E2" cx="16" cy="16" r="16"/><circle fill="#F6F6F6" cx="16" cy="16" r="15"/><path fill="#E2E2E2" d="M12 24.4c-0.1-0.9-0.2-2.2 0-3.1 0.2-0.9 1.3-5.4 1.3-5.4S13 15.2 13 14.2c0-1.5 0.9-2.7 2-2.7 0.9 0 1.4 0.7 1.4 1.5 0 0.9-0.6 2.3-0.9 3.6 -0.3 1.1 0.5 2 1.6 2 1.9 0 3.4-2.1 3.4-5 0-2.6-1.9-4.5-4.6-4.5 -3.1 0-4.9 2.3-4.9 4.8 0 0.9 0.4 2 0.8 2.5 0.1 0.1 0.1 0.2 0.1 0.3 -0.1 0.3-0.3 1.1-0.3 1.2 0 0.2-0.2 0.2-0.4 0.1C9.9 17.6 9 15.6 9 13.9c0-3.5 2.5-6.6 7.2-6.6 3.8 0 6.8 2.7 6.8 6.3 0 3.8-2.4 6.8-5.7 6.8 -1.1 0-2.2-0.6-2.5-1.3 0 0-0.5 2.1-0.7 2.6 -0.2 1-0.9 2.1-1.4 2.9C12.3 24.7 12.2 24.7 12 24.4z"/></svg>';
     var gplus_svg = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" width="32" height="32" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve"><circle fill="#E2E2E2" cx="16" cy="16" r="16"/><circle fill="#F6F6F6" cx="16" cy="16" r="15"/><path fill="#E2E2E2" d="M8.9 12c0 1.4 0.5 2.3 1.4 2.9 0.8 0.5 1.7 0.5 2.2 0.5 0.1 0 0.2-0.1 0.3-0.1 0 0-0.1 0.7 0.6 1.7h0c-1.3 0-5.3 0.4-5.3 3.5 0 3.2 3.7 3.5 4.5 3.5 0.1 0 0.1 0 0.1 0 0 0 0.1 0 0.2 0 0.5 0 1.7-0.1 2.9-0.6 1.5-0.7 2.3-1.9 2.3-3.5 0-1.6-1.2-2.6-2-3.3 -0.5-0.4-1-0.8-1-1.1 0-0.4 0.3-0.6 0.7-1 0.7-0.6 1.3-1.4 1.3-2.9 0-1.3-0.2-2.2-1.3-2.8 0.1-0.1 0.6-0.1 0.8-0.1 0.6-0.1 1.5-0.2 1.5-0.6V8h-4.5C13.4 8 8.9 8.2 8.9 12zM16.2 20.2c0.1 1.3-1.1 2.2-2.8 2.3 -1.8 0.1-3.2-0.6-3.3-1.9 0-0.6 0.2-1.2 0.8-1.7 0.6-0.5 1.4-0.8 2.2-0.8 0.1 0 0.2 0 0.3 0C15 18.1 16.1 19 16.2 20.2zM15 11.1c0.4 1.4-0.2 3-1.3 3.2 -0.1 0-0.2 0.1-0.4 0.1 -1 0-1.9-0.9-2.3-2.2 -0.2-0.7-0.2-1.3 0-1.9 0.2-0.6 0.6-1 1.1-1.1 0.1 0 0.2 0 0.4 0C13.8 9.1 14.5 9.6 15 11.1zM22 14v-2h-2v2h-2v2h2v2h2v-2h2v-2H22z"/></svg>';
@@ -529,19 +521,19 @@ var pJS = function (tag_id, params) {
     var svgs = [twitter_svg, pinterest_svg, gplus_svg, fb_f_svg, fb_like_svg, rss_svg, empty_svg];
 
     pJS.fn.particlesCreate = function () {
-        for(var i = 0; i < svgs.length; i++){
+        for(var N = 0; N < svgs.length; N++){
             var theImage = new Image();
-            theImage.src = 'data:image/svg+xml,' + encodeURI(svgs[i]);
+            theImage.src = 'data:image/svg+xml;base64,' + window.btoa(svgs[N]);
             theImages.push(theImage);
         }
 
-        for (var i = 0; i < pJS.particles.number.value; i++) {
+        for (N = 0; N < pJS.particles.number.value; N++) {
             particleRandomSeed = Math.random();
             var newParticle =  new pJS.fn.particle(
                 pJS.particles.color,
                 pJS.particles.opacity.value,
                 0,
-                theImages[Math.floor((particleRandomSeed * (theImages.length)) + 1)],
+                Math.floor((particleRandomSeed * (theImages.length-1)) + 1),
                 Math.floor((particleRandomSeed * 64) + 32)
             );
             pJS.particles.array.push(newParticle);
@@ -806,7 +798,7 @@ var pJS = function (tag_id, params) {
                         'x': pos ? pos.pos_x : Math.random() * pJS.canvas.w,
                         'y': pos ? pos.pos_y : Math.random() * pJS.canvas.h
                     },
-                    theImages[Math.floor((Math.random() * (theImages.length)) + 1)],
+                    Math.floor((Math.random() * (theImages.length-1)) + 1),
                     Math.floor((Math.random() * 64) + 32)
                 )
             );
