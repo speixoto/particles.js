@@ -426,7 +426,7 @@ var pJS = function (tag_id, params) {
         switch (p.shape) {
             case 'circle':
                 if( typeof this.logo === 'undefined' ){
-                    this.logo = Math.floor((Math.random() * (theImages.length-1)));
+                    this.logo = Math.floor((Math.random() * theImages.length));
                 }
                 pJS.canvas.ctx.drawImage(
                     theImages[this.logo],
@@ -799,7 +799,7 @@ var pJS = function (tag_id, params) {
                         'x': pos ? pos.pos_x : Math.random() * pJS.canvas.w,
                         'y': pos ? pos.pos_y : Math.random() * pJS.canvas.h
                     },
-                    Math.floor((Math.random() * (theImages.length-1))),
+                    Math.floor((Math.random() * theImages.length)),
                     Math.floor((Math.random() * 64) + 32)
                 )
             );
